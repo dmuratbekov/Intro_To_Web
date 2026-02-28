@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* ex1 */
+.bg-image {
+    width: 400px;
+    height: 150px;
+    background-image: url("https://picsum.photos/400/150");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ex2 */
+.linear-gradient {
+    width: 300px;
+    height: 100px;
+    background: linear-gradient(to right, blue, purple);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.radial-gradient {
+    width: 300px;
+    height: 100px;
+    background: radial-gradient(circle, red, yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ex3 */
+.border1 {
+    border: 3px solid black;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.border2 {
+    border: 3px dashed green;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.border3 {
+    border: 3px solid blue;
+    border-radius: 25px;
+    padding: 15px;
+    margin: 10px 0;
+}
