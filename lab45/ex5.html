@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 5 - Images</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="loadImages()">
+    <div class="container">
+        <h1>Lab 5: Image Gallery</h1>
+        <div id="gallery" class="gallery"></div>
+    </div>
+
+    <script>
+        async function loadImages() {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = "Loading...";
+
+            try {
+                const res = await fetch("https://jsonplaceholder.typicode.com/photos?_limit=5");
+                const photos = await res.json();
+
+                gallery.innerHTML = "";
+                photos.forEach(photo => {
+                    const item = document.createElement("div");
+                    item.className = "gallery-item";
+                    item.innerHTML = `
+                        <img src="${photo.thumbnailUrl}" alt="${photo.title}">
+                        <p>${photo.title}</p>
+                    `;
+                    gallery.appendChild(item);
+                });
+            } catch (err) {
+                console.error(err);
+                gallery.innerHTML = "Error loading images";
+            }
+        }
+    </script>
+</body>
+
+</html>

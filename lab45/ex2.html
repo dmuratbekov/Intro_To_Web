@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 2 - Posts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="loadPosts()">
+    <div class="container">
+        <h1>Lab 2: Posts (First 5)</h1>
+        <div id="posts"></div>
+    </div>
+
+    <script>
+        async function loadPosts() {
+            const postsDiv = document.getElementById("posts");
+            postsDiv.innerHTML = "Loading...";
+
+            try {
+                const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+                const posts = await res.json();
+
+                postsDiv.innerHTML = "";
+                posts.slice(0, 5).forEach(p => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+                    card.innerHTML = `<h3>${p.title}</h3><p>${p.body}</p>`;
+                    postsDiv.appendChild(card);
+                });
+            } catch (err) {
+                console.error(err);
+                postsDiv.innerHTML = "Error loading posts";
+            }
+        }
+    </script>
+</body>
+
+</html>

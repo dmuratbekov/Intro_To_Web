@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    padding: 30px 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.hint {
+    color: #666;
+    margin-top: 0;
+}
+
+/* Gallery grid */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+    opacity: 0.95;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* fade in/out */
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    position: relative;
+    width: min(900px, 92vw);
+    background: #111;
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+
+.modal.hidden .modal-content {
+    transform: scale(0.95);
+}
+
+#modalImg {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.15s ease;
+}
+
+/* tiny zoom on open/switch */
+#modalImg.zoom {
+    transform: scale(1.02);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 18px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.nav {
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 22px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.caption {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 10px;
+    color: #eee;
+    font-size: 14px;
+    text-align: center;
+    opacity: 0.9;
+}

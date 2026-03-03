@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="loadUsers()">
+    <div class="container">
+        <h1>Lab 1</h1>
+        <ul id="userList"></ul>
+    </div>
+
+    <script>
+        async function loadUsers() {
+            const ul = document.getElementById("userList");
+            ul.innerHTML = "Loading...";
+
+            try {
+                const res = await fetch("https://jsonplaceholder.typicode.com/users");
+                const users = await res.json();
+
+                ul.innerHTML = "";
+                users.forEach(u => {
+                    const li = document.createElement("li");
+                    li.textContent = `${u.name} — ${u.email}`;
+                    ul.appendChild(li);
+                });
+            } catch (err) {
+                ul.innerHTML = "";
+                console.error(err);
+                ul.innerHTML = "Error loading users";
+            }
+        }
+    </script>
+</body>
+
+</html>
